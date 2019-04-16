@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Detalle Pedido{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col"><h1>Pedido #{{ pedido.id }}</h1></div>
+</div>
+<div class="row">
+  <div class="col">DNI: {{ pedido.dni }}</div>
+</div>
+<div class="row">
+  <div class="col">Nombre: {{ pedido.nombre }}</div>
+</div>
+<div class="row">
+  <div class="col">Apellido: {{ pedido.apellido }}</div>
+</div>
+<div class="row">
+  <div class="col">Email: {{ pedido.email }}</div>
+</div>
+<div class="row">
+  <div class="col">
+    Género:
+    {% if pedido.genero == "M" %}
+        Masculino
+    {% elif pedido.genero == "F" %}
+        Femenino
+    {% else %}
+        Desconocido
+    {% endif %}
+  </div>
+</div>
+<div class="row">
+  <div class="col">Monto: $ {{ pedido.monto }}</div>
+</div>
+<div class="row">
+  <div class="col">
+    Autorizado:
+    {% if pedido.autorizado %}
+        Sí
+    {% else %}
+        No
+    {% endif %}
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+  Creado el {{ pedido.fecha }}.
+  </div>
+</div>
+{% if pedido.fecha != pedido.fecha_ultima_modificacion %}
+<div class="row">
+  <div class="col">
+   Última modificación el {{ pedido.fecha_ultima_modificacion }}.
+  </div>
+</div>
+{% endif %}
+{% endblock %}

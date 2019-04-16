@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+  
+{% load i18n %}
+
+{% block title %}Solicitar Préstamo{% endblock %}
+
+{% block content %}
+  <h1>Pedido {{ pedido.id }}</h1>
+  <form class="form-horizontal" method="post" action="{% url 'prestamos:pedido-create' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="control-group">
+      <div class="controls">
+        <button type="submit" class="btn">Solicitar</button>
+      </div>
+    </div>
+  </form>
+{% endblock %}

@@ -1,0 +1,19 @@
+version: '2'
+
+volumes:
+  local_sqlite_data: {}
+
+services:
+  django:
+    build:
+      context: .
+      dockerfile: ./compose/local/django/Dockerfile
+    image: baragiola_moni_local_django
+    volumes:
+      - .:/app
+      - local_sqlite_data:/app/data
+    env_file:
+      - ./.envs/.local/.django
+    ports:
+      - "8000:8000"
+    command: /start

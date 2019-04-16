@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+  
+{% block title %}Lista de Pedidos{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col"><h1>Pedidos</h1></div>
+</div>
+<div class="row">
+  <div class="col">
+    <ul>
+      {% for pedido in pedidos %}
+      <div class="row">
+        <div class="col">
+          <a href="{% url 'prestamos:pedido-detail' pedido.id %}">
+            <b>{{ pedido }}</b>
+          </a>
+        </div>
+        <div class="col">
+          <a href="{% url 'prestamos:pedido-update' pedido.id %}">
+            <b>EDITAR</b>
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}
